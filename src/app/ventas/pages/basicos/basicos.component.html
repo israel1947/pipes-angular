@@ -1,0 +1,86 @@
+
+<div class="text-layout">
+    <h1>Pipes Básicos</h1>
+    <p>
+        Pipes incluidos en Angular - Usualmente en el Cammon Module
+    </p>
+</div>
+
+<div class="grid">
+
+    <div class="col-4">
+        <p-card
+            header="uppercase"
+            [subheader]="nombreLower |uppercase">
+            {{nombreLower | uppercase}}
+      </p-card>
+    </div>
+
+    <div class="col-4">
+        <p-card
+            header="lowercase"
+            [subheader]=" nombreUpper | lowercase">
+            {{ nombreUpper | lowercase}}
+        </p-card>
+    </div>
+
+    <div class="col-4">
+        <p-card
+            header="titlecase"
+            [subheader]="nombreCompleto | titlecase">
+            {{nombreCompleto | titlecase}}
+        </p-card>
+    </div>
+</div>
+
+<div class="text-layout">
+    <h1>Date | Fecha | Pipes</h1>
+    <p>
+        Pipes para mostra la fecha
+    </p>
+</div>
+
+<div class="grid">
+    <div class="col-6">
+        <p-card>
+            <ul>
+                <li>Fecha</li>
+                <li>Fecha | Pipe Date</li>
+                <li>Fecha | Pipe Date:'short'</li>
+                <li>Fecha | Pipe Date:'long'</li>
+                <li>Fecha | Pipe Date:'shortDate'</li>
+                <li>Fecha | Pipe Date:'superfull'</li>
+            </ul>
+
+            <hr>
+            <ul>
+                <li>Fecha | Pipe Date:'long':'GMT-6'</li>
+                <li>Fecha | Pipe Date:'long':'GMT-9'</li>
+                <li>Fecha | Pipe Date:'long':'Fr' Cambio de idioma</li>
+            </ul>
+
+        </p-card>
+    </div>
+    <div class="col-6">
+        <p-card>
+            <ul>
+                <li>{{fecha}}</li>
+                <li>{{fecha |date }}</li>
+                <li>{{fecha |date:'short' }}</li>
+                <li>{{fecha |date:'long' }}</li>
+                <li>{{fecha |date:'shortDate' }}</li>
+                <li>{{fecha |date:'E LLL /dd/ yyy hh:m:s aaa z' }}</li>
+            </ul>
+
+            <hr>
+            <ul>
+                <li>{{fecha |date:'long':'GMT-6':'es-CO' }}</li><!--este hace referencia al cambio de zona horaria-->
+                <li>{{fecha |date:'long':'GMT-9' }}</li><!--este hace referencia al cambio de zona horaria-->
+                <li>{{fecha |date:'long':'':'fr' }}</li><!--este hace referencia al cambio de idioma-->
+            </ul>
+
+        </p-card>
+    </div>
+</div>
+
+

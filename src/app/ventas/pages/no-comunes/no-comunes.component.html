@@ -1,0 +1,84 @@
+
+
+<div class="text-layout">
+    <h1>Pipes No-Comunes</h1>
+    <p>
+        Pipes incluidos en Angular - Usualmente en el Cammon Module
+    </p>
+</div>
+
+<div class="grid">
+    <div class="col-6  p-sm-6">
+        <p-fieldset legend="i18nSelect pipe" [toggleable]="true">
+            <p>
+                Saludos {{nombre | uppercase}}, es un placer {{genero | i18nSelect: invitacionMap}} a nuestras ventas
+            </p>
+            <button
+               (click)="cambiarCliente()"
+                pButton type="button"
+                label="Cambiar Persona">
+            </button>
+        </p-fieldset>
+    </div>
+
+    <div class="col-6 p-sm-6">
+        <p-fieldset legend="i18nPlural pipe" [toggleable]="true">
+            <p>
+                Actualmente {{clientes.length |i18nPlural:clientesMap}}.
+            </p>
+            <button
+                (click)="borrarCliente()"
+                class="p-button-danger"
+                pButton type="button"
+                label="Borrar Cliente"
+                icon="pi pi-trash" 
+                iconPos="left">
+            </button>
+        </p-fieldset>
+    </div>
+
+    <div class="col-6 p-sm-6">
+        <p-fieldset legend="SlicePipe" [toggleable]="true">
+            <b>Orginal <pre>{{clientes}}</pre> </b>
+            <b>Slice:0:2</b>
+            <pre>{{clientes|slice:0}} </pre>
+        </p-fieldset>
+    </div>
+
+    <div class="col-6 p-sm-6">
+        <p-fieldset legend="keyValue pipe" [toggleable]="true">
+            <ul>
+                <li *ngFor="let item of persona | keyvalue">
+                    <b>{{item.key|titlecase}}:</b>{{item.value}}
+                </li>
+            </ul>
+        </p-fieldset>
+    </div>
+
+    <div class="col-6 p-sm-6">
+        <p-fieldset legend="Json pipe" [toggleable]="true">
+            <pre>{{heroes | json}}</pre>
+        </p-fieldset>
+    </div>
+
+    <div class="col-6 p-sm-6">
+        <p-fieldset legend="Async Pipe" [toggleable]="true">
+            <pre>{{myObservable |async}}</pre>
+            <pre *ngIf="!(valorPromesa | async)" >Resolviendo promesa</pre>
+            <pre>{{valorPromesa |async}}</pre>
+        </p-fieldset>
+    </div>
+</div>
+
+
+<!--!(valorPromesa | async) significa que si no hay niongun valor entonces se negara es decir, que no se mostrara nada, ya que su valor por default es null y solo se mostrara cando tengamos un valor mostrado-->
+
+<!--el Async Pipe lo que hace es que nos muestra en el DOM los valores numericos que esta imprimiendo el observable que creamos desde nuestro archivo de Ts es decir, que el hace la suscripcion a este obserbavle internamente por nosotros-->
+
+<!--el Json pipe este permite que podamos imprimir nuestro objeto en el DOM de nuestra App-->
+
+<!--el pipe keyvalue lo que nos ayuda es a que Angular pueda interpretar el arreglo sin ningun tipo de inconvenientes, ya que el *ngFor que es una propiedad exclusiva de Angular y esta  solo puede leer e interpretar arreglos.Pero eso no es todo, este pipe en particular tiene un uso diferente, ya que para poder imprimir el objeto en el documento(DOM) es necesario que se imprima la llave(key) y el valor(value) individualmente, para hacerlo es necesario mandar a llmar la llamar el item.key y luego el item.value-->
+
+<!--invitacionMap lo que hace es que trae los valores de su objeto definido en el archivo.ts esto dependiendo de el genero de la personan, que tambien se define en el archivo,ts-->
+
+<!--clientesMap manda llmar las condiciones que se definieron en el archivo.ts donde dice que si el numero de cliente es de cer(0) entonces dira que no hay clientes, si es uno(1) dira que hay un cliente en espera(lo dira en singular), pero si es mayor a uno(1)entonces entrara entra el i18nPlural que dice la cantiodad de clientes en espera que tenemos(lo dira en plural) -->
